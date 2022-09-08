@@ -22,5 +22,18 @@ pipeline{
         }
 
         // Add the Release stage here
+        stage('Release') {
+
+            steps {
+
+                sh '''
+
+                oc project test-cr-jenkins-greetings
+
+                oc start-build greeting-console --follow --wait
+
+                '''
+            }
+        }
     }
 }
